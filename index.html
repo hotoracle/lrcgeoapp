@@ -1,0 +1,324 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LRC OFFLINE GEO-TAGGING APP</title>
+<link href="jquery-mobile/jquery.mobile-1.0a3.min.css" rel="stylesheet" type="text/css">
+<script src="jquery-mobile/jquery-1.5.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/trnotes.js"></script>
+<script src="jquery-mobile/jquery.mobile-1.0a3.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/phonegap.js"></script>
+<style>
+article, footer {
+	display: block;
+}
+#home h2 {
+	margin-bottom: 5px;
+}
+#limit {
+	margin: 0 auto 20px 40px;
+}
+footer p {
+	text-align:right;
+	font-style:italic;
+	font-size:90%;
+	margin: 5px inherit;
+}
+#entries {
+	display: none;
+}
+</style>
+</head>
+
+<body>
+<div class="flip" id="home" data-role="page" data-theme="b">
+  <div data-role="header">
+    <h1>LRC OFFLINE GEO-TAGGING APP</h1>
+  </div>
+  <div data-role="content" data-theme="b">
+    <ul data-role="listview">
+      <li><a href="#new">New Record Entry</a></li>
+    </ul>
+    <div id="entries">
+      <h2>Most Recent Entries</h2>
+      <a href="#" data-role="button" data-inline="true" id="limit">List All Entries</a>
+      <ul id="recent" data-role="listview" data-inset="true" data-filter="true">
+      </ul>
+    </div>
+  </div>
+</div>
+<div data-role="page" id="new">
+  <div data-role="header" data-theme="b">
+    <h1>New Record Entry</h1>
+  </div>
+  <div data-role="content" data-theme="b">
+    <form action="" method="post" name="insert" id="insert" data-ajax="false">
+      <div data-role="fieldcontain">
+        <label for="lagis">Lagis ID:</label>
+        <input type="text" name="lagis" id="lagis" value=""  />
+      </div>
+	  <div data-role="fieldcontain">
+        <label for="pin">Property Pin:</label>
+        <input type="text" name="pin" id="pin" value=""  />
+      </div>
+	  <div data-role="fieldcontain">
+      <label for="houseNo">House No:</label>
+      <input type="text" name="houseNo" id="houseNo" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="street">Street Name:</label>
+      <input type="text" name="street" id="street" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="district">District Name:</label>
+      <input type="text" name="district" id="district" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="lga" class="select">LGA:</label>
+      <select name="lga" id="lga">
+        <option value="Agege">Agege</option>
+        <option value="Ajeromi">Ajeromi Ifelodun</option>
+        <option value="Alimosho">Alimosho</option>
+      </select>
+    </div>
+    <div data-role="fieldcontain">
+      <label for="usage" class="select">Property Usage:</label>
+      <select name="usage" id="usage">
+        <option value="Mosque">Mosque</option>
+        <option value="Church">Church</option>
+        <option value="Residential">Residential</option>
+      </select>
+    </div>
+    <div data-role="fieldcontain">
+      <label for="otherUsage">Other Usages:</label>
+      <input type="text" name="otherUsage" id="otherUsage" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="poi">Point of Interest:</label>
+      <input type="text" name="poi" id="poi" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="otherPoi">Other Points of Interest:</label>
+      <input type="text" name="otherPoi" id="otherPoi" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="lasaHouseNo">LASAA House No:</label>
+      <input type="text" name="lasaHouseNo" id="lasaHouseNo" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="lasaStreet">LASAA Street Name:</label>
+      <input type="text" name="lasaStreet" id="lasaStreet" value=""  />
+    </div>
+      <div data-role="fieldcontain">
+        <label for="remarks">Remarks:</label>
+        <textarea cols="40" rows="8" name="remarks" id="remarks"></textarea>
+      </div>
+	<div data-role="none">
+        <label for="fileUpload">Upload Picture:</label>
+        <input name="fileUpload" id="fileUpload" type="file" />
+      </div>
+      <input name="create" type="submit" id="create" value="Insert Data" data-theme="b" />
+    </form>
+  </div>
+</div>
+<div id="editNote" data-role="page" data-theme="b">
+  <div data-role="header">
+    <h1>Update Record</h1>
+  </div>
+  <div data-role="content" data-theme="b">
+    <form action="" method="post" name="edit" id="edit" data-ajax="false">
+      <div data-role="fieldcontain">
+        <label for="lagis2">Lagis ID:</label>
+        <input type="text" name="lagis2" id="lagis2" value=""  />
+      </div>
+	  <div data-role="fieldcontain">
+        <label for="pin2">Pin:</label>
+        <input type="text" name="pin2" id="pin2" value=""  />
+      </div>
+	   <div data-role="fieldcontain">
+      <label for="houseNo2">House No:</label>
+      <input type="text" name="houseNo2" id="houseNo2" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="street2">Street Name:</label>
+      <input type="text" name="street2" id="street2" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="district2">District Name:</label>
+      <input type="text" name="district2" id="district2" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="lga2" class="select">LGA:</label>
+      <select name="lga2" id="lga2">
+        <option value="Agege">Agege</option>
+        <option value="Ajeromi">Ajeromi Ifelodun</option>
+        <option value="Alimosho">Alimosho</option>
+      </select>
+    </div>
+    <div data-role="fieldcontain">
+      <label for="usage2" class="select">Property Usage:</label>
+      <select name="usage2" id="usage2">
+        <option value="Mosque">Mosque</option>
+        <option value="Church">Church</option>
+        <option value="Residential">Residential</option>
+      </select>
+    </div>
+     <div data-role="fieldcontain">
+      <label for="otherUsage2">Other Usages:</label>
+      <input type="text" name="otherUsage2" id="otherUsage2" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="poi2">Point of Interest:</label>
+      <input type="text" name="poi2" id="poi2" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="otherPoi2">Other Points of Interest:</label>
+      <input type="text" name="otherPoi2" id="otherPoi2" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="lasaHouseNo2">LASAA House No:</label>
+      <input type="text" name="lasaHouseNo2" id="lasaHouseNo2" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="lasaStreet2">LASAA Street Name:</label>
+      <input type="text" name="lasaStreet2" id="lasaStreet2" value=""  />
+    </div>
+      <div data-role="fieldcontain">
+        <label for="remarks2">Remarks:</label>
+        <textarea cols="40" rows="8" name="remarks2" id="remarks2"></textarea>
+      </div>
+	  <div data-role="none">
+        <label for="fileUpload2">Upload Picture:</label>
+        <input name="fileUpload2" id="fileUpload2" type="file" />
+      </div>
+      <input name="update" type="submit" id="update" value="Update" data-theme="b" />
+    </form>
+  </div>
+</div>
+<div id="display" data-role="page" data-theme="b">
+  <div data-role="header">
+    <h1>Display Record</h1>
+  </div>
+  <div data-role="content" data-theme="b">
+    <article></article>
+    <p><a href="#pix" data-role="button">Take Picture</a></p>
+    <p><a href="#" id="showmap" data-role="button">Show Map</a></p>
+    <footer></footer>
+    <div data-role="controlgroup" data-type="horizontal"><a href="#" data-role="button" id="editItem">Edit Record</a><a href="#" data-role="button" id="delete">Delete Record</a></div>
+  </div>
+</div>
+<div id="map" data-role="page" data-theme="b">
+  <div data-role="header" data-theme="b">
+    <h1>Display Map</h1>
+  </div>
+  <div data-role="content"></div>
+</div>
+<div id="pix" data-role="page" data-theme="b">
+  <div data-role="header">
+    <h1>Take Picture</h1>
+	<script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+    // Wait for Cordova to connect with the device
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // Cordova is ready to be used!
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageURI) {
+      // Uncomment to view the base64 encoded image data
+       console.log(imageURI);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = imageURI;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI 
+       console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+    function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 75,
+        destinationType: Camera.DestinationType.DATA_URI });
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoEdit() {
+      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 75, allowEdit: true,
+        destinationType: destinationType.DATA_URI });
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 75, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    // 
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
+    </script>
+  </div>
+  <div data-role="content">
+  	 
+    <button onclick="capturePhoto();">Capture Photo</button> <br>
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <input type="file" accept="image/*;capture=camera">
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+    </div>
+  <div data-role="footer">
+    <h4>Footer</h4>
+  </div>
+</div>
+
+</body>
+</html>
